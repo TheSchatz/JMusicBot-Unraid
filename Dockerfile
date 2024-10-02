@@ -17,9 +17,6 @@ RUN response=$(curl -s https://api.github.com/repos/jagrosh/MusicBot/releases/la
     filename=$(echo "$response" | grep -o '"name": "[^"]*' | grep -o '[^"]*\.jar') && \
     wget -O "$filename" "$download_url"
 
-# Copy the config.txt file into the container
-COPY config.txt /app/config.txt
-
 # Copy the entrypoint script to the container
 COPY entrypoint.sh /app/entrypoint.sh
 
