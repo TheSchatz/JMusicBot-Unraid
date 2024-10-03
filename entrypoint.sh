@@ -10,7 +10,10 @@ fi
 chmod a+rw /app/config/config.txt
 
 # Get the newest JAR file name
-filename=$(ls -t /app | grep '.jar' | head -n 1)
+jar=$(ls -t /app/config | grep '.jar' | head -n 1)
+
+#copy jar to /app
+cp /app/config/$jar /app/
 
 # Start the JAR file
-java -Dnogui=true -Dconfig=/app/config/config.txt -jar "/app/$filename"
+java -Dnogui=true -Dconfig=/app/config/config.txt -jar "/app/$jar"
